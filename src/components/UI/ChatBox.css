@@ -1,0 +1,166 @@
+.chat-window {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 100%;
+  height: 100%;
+  max-width: 92%;
+  max-height: 90vh;
+  text-align: left;
+}
+
+.chat-messages {
+  min-height: 300px;
+  margin: 0.5rem 0;
+  border-radius: 1rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #f3eeeaad;
+  background-color: #b0a695;
+  padding: 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+.chat-messages p {
+  font-size: 0.85rem;
+}
+
+.chat-input {
+  margin: 0.5rem 0;
+  border-radius: 1rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #f3eeeaad;
+  background-color: #776b5d;
+  padding: 0.7rem 1rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+.chat-input form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.chat-input form textarea {
+  all: unset;
+  min-height: 50px;
+  width: 90%;
+  height: auto;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  resize: none;
+  border: none;
+  box-sizing: border-box;
+  padding: 10px 0;
+  font-size: 0.85rem;
+}
+
+.chat-input form button {
+    background-color: transparent;
+    border-width: 0;
+    display: inline-flex;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.chat-input form button svg {
+    filter: drop-shadow(1px 3px 1px rgb(0 0 0 / 0.7));
+    transition: all ease-in-out 0.2s;
+}
+
+.chat-input form button:hover svg{
+    font-size: 2.1rem;
+    color: beige;
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.7));
+}
+
+.chat-input form button:active svg {
+    font-size: 2rem;
+    color: black;
+    filter: drop-shadow(0px 0px 7px rgb(255 255 255 / 0.9));
+}
+
+.client-inputmsg {
+  padding: 0 0.3rem;
+  margin: 0.5rem 0;
+  display: flex;
+  gap: 5px;
+  border-radius: 1rem;
+  background-color: #776b5d8e;
+}
+
+.client-inputmsg strong {
+  margin: 0.5rem 0.2rem;
+  font-size: 2rem;
+}
+
+.client-inputmsg strong svg {
+  color: rgb(5, 186, 192);
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.6));
+}
+
+.bot-response {
+  padding: 0 0.3rem;
+  margin: 0.5rem 0;
+  display: flex;
+  gap: 5px;
+}
+
+.bot-response strong {
+  margin: 0.5rem 0.2rem;
+  font-size: 2rem;
+}
+
+.bot-response strong svg {
+  color: rgb(21, 192, 5);
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.6));
+}
+
+.bot-response p {
+  margin: 0.3rem 0
+}
+
+
+.spinner {
+  margin: 0 3px;
+  width: 70px;
+}
+
+.spinner > div {
+  width: 7px;
+  height: 7px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
