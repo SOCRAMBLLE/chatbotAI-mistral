@@ -12,6 +12,9 @@ const ChatBox = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!message.trim()) {
+        return;
+    }
     setClientInput(message);
     setMessage("");
     setTextareaHeight("auto");
