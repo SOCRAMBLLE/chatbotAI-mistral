@@ -48,7 +48,7 @@ const ChatBox = () => {
           for (let i = 0; i < response.length; i++) {
             currentResponse += response.charAt(i);
             setAiBotResponse(currentResponse);
-            await new Promise((resolve) => setTimeout(resolve, 25));
+            await new Promise((resolve) => setTimeout(resolve, 15));
           }
         } catch (error) {
           console.error("Error calling callBotApi:", error);

@@ -8,3 +8,9 @@
   max-height: 90vh;
   text-align: left;
 }
+
+@media (min-width: 600px) {
+  .chat-window {
+    width: 550px;
+  }
+}
