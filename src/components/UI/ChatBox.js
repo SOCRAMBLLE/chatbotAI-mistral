@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ChatBox.css";
-import { Ollama } from "langchain/llms/ollama";
+import callBotApi from "../API/API";
 import ChatInput from "./ChatInput";
 import ChatMessages from "./ChatMessages";
 
@@ -9,6 +9,7 @@ const ChatBox = () => {
   const [textareaHeight, setTextareaHeight] = useState("auto");
   const [aiBotResponse, setAiBotResponse] = useState("");
   const [clientInput, setClientInput] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (event) => {
@@ -19,6 +20,7 @@ const ChatBox = () => {
     setClientInput(message);
     setMessage("");
     setTextareaHeight("auto");
+    setFormSubmitted(true);
   };
 
   const handleTextareaChange = (event) => {
@@ -38,23 +40,19 @@ const ChatBox = () => {
     const fetchData = async () => {
       if (clientInput) {
         setIsLoading(true);
-        const ollama = new Ollama({
-          baseUrl: "http://localhost:11434/",
-          model: "mistral",
-        });
 
-        const response = await ollama.call(clientInput);
-        
-        setIsLoading(false);
-        let currentResponse = "";
-        for (let i = 0; i < response.length; i++) {
-          currentResponse += response.charAt(i);
-          setAiBotResponse(currentResponse);
-          await new Promise((resolve) => setTimeout(resolve, 25));
-        }
-
-        
-       
+        try {
+          const response = await callBotApi(clientInput);
+          let currentResponse = "";
+          setIsLoading(false);
+          for (let i = 0; i < response.length; i++) {
+            currentResponse += response.charAt(i);
+            setAiBotResponse(currentResponse);
+            await new Promise((resolve) => setTimeout(resolve, 25));
+          }
+        } catch (error) {
+          console.error("Error calling callBotApi:", error);
+        } 
       }
     };
 
@@ -70,6 +68,7 @@ const ChatBox = () => {
         clientInput={clientInput}
         aiBotResponse={aiBotResponse}
         isLoading={isLoading}
+        formSubmitted={formSubmitted}
       />
       <ChatInput
         message={message}
