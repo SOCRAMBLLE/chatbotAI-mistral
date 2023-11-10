@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./ChatBox.css";
-import { AiOutlineSend, AiFillRobot, AiFillMeh } from "react-icons/ai";
 import { Ollama } from "langchain/llms/ollama";
+import ChatInput from "./ChatInput";
+import ChatMessages from "./ChatMessages";
 
 const ChatBox = () => {
   const [message, setMessage] = useState("");
@@ -65,37 +66,18 @@ const ChatBox = () => {
   return (
     <>
       <section className="chat-window">
-        <div className="chat-messages">
-          <div className="client-inputmsg">
-            <strong><AiFillMeh /></strong>
-            <p>{clientInput}</p>
-          </div>
-          <div className="bot-response">
-            <strong><AiFillRobot /></strong>
-            <p>{isLoading ? (<div className="spinner">
-              <div className="bounce1"></div>
-              <div className="bounce2"></div>
-              <div className="bounce3"></div>
-            </div>) : aiBotResponse}</p>
-          </div>
-        </div>
-        <div className="chat-input">
-          <form onSubmit={handleSubmit}>
-            <textarea
-              id="prompt-input"
-              style={{ height: textareaHeight }}
-              rows="1"
-              cols="50"
-              name="input-msg"
-              value={message}
-              onChange={handleTextareaChange}
-            ></textarea>
-            <button type="submit">
-              <AiOutlineSend />
-            </button>
-          </form>
-        </div>
-      </section>
+      <ChatMessages
+        clientInput={clientInput}
+        aiBotResponse={aiBotResponse}
+        isLoading={isLoading}
+      />
+      <ChatInput
+        message={message}
+        textareaHeight={textareaHeight}
+        onTextareaChange={handleTextareaChange}
+        onSubmit={handleSubmit}
+      />
+    </section>
     </>
   );
 };
