@@ -48,6 +48,10 @@
     padding: 10px 0;
     font-size: 0.85rem;
   }
+
+  .chat-input form textarea::placeholder {
+    color: #b0a695;
+  }
   
   .chat-input form button {
       background-color: transparent;
